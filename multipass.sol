@@ -24,6 +24,7 @@ contract multipass is owned {
     string public avatar;             // external link to image of owner
     uint public creationTime = now;   //when the contract was origionally created
 
+
 //Accounts section
     uint cCount;
     struct cmnt{
@@ -54,7 +55,7 @@ function startMultipass(string _author, string _title, string _description, stri
     }
 
 // change the public verification message. could be useful to prove ownership
-function verification(string _msg) onlyOwner {
+function veriPass(string _msg) onlyOwner {
   verifier = _msg;
   verification(verifier);
 }
@@ -88,6 +89,22 @@ function modPass(uint _action, uint _index, string _aSite, string _aUsrname, str
         }
     }
 
+//figure out a way to do this better
+
+//returns an site at index address
+function getSite(uint _index) constant returns (string){
+  return cmnts[_index].aSite;
+  }
+
+//returns an site at index address
+function userName(uint _index) constant returns (string){
+  return cmnts[_index].aUsrname;
+  }
+
+//returns an site at index address
+function GetProfile(uint _index) constant returns (string){
+  return cmnts[_index].aUrl;
+  }
 
 
 
