@@ -2,17 +2,22 @@
 
 ![Lilu Dallas](https://s-media-cache-ak0.pinimg.com/564x/54/f5/68/54f568be0db4765002160044ce099d89.jpg)x
 ## Abstract
-A simple method of maintaining a list of social media accounts with the abality to verify ownership uising a smart contract on the Ehtereum classic chain.
-s
+A simple method of maintaining a list of social media accounts with the ability to verify ownership using a smart contract on the Ethereum classic chain. Multi pass accounts are anchored to social media accounts by linking to a post declaring the multi pass exists. A simple zK proofing system for indicating ownership is built in with the verifier function. Only the person in control of the owner key can update the verifier text. This can be used to prove active ownership of all accounts. 
+
 ## Deploying
 Some steps to deploy on parity
-1) copy and paste contractx
+1) copy and paste contract
 2) deploys
-3) add Owner infox 
+3) add Owner info
 4) start adding accounts
-
+## Anchoring posts
+A post on a social media site referencing your multipass that is stored on the multi pass. I.E. the url from a tweet indicating  control of multipass contract at 0x…. that is stored on ones multi pass
 ## Verifying
-If someone wishes to verify an identiy, the owner gives the contract address and the verifyer uses the user ABI 
+Multi pass addresses are intended to be shared. An owner can prove that they are in control of a multi pass by use of the verify() function. 
+Example:
+Victor and Paula are on a new social media site together. Paula is famous and she has many impersonators.  Victor would like Paula to show proof that she is, in fact, the real Paula. 
+Victor knows that the real Paula has social media accounts sm(1), sm(2), sm(n). The real Paula has made anchoring posts on all of her sm sites as part of establishing her multi pass. And Victor knows the real Paula’s multi pass contract. 
+In order to test Paula, Victor gives her a phrase to change the verifying phrase on the multi pass too, and watches the contract for the change. Only the owner of the multi pass can change the verifying phrase. If the phrase changes, Victor can better trust that Paula is in fact real. Repeating this process ensures victor that the Paula he is in contact with is most likely the real Paula. 
 
 
 ## Terms
