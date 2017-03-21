@@ -42,16 +42,16 @@ contract multipass is owned {
 // store comments
     mapping(uint => cmnt) cmnts;
 
-function startMultipass(string _author, string _title, string _description, string _extUrl, string _avatar) onlyOwner{
+function startMultipass(string _author, string _title, string _description, string _extUrl, string _avatar, uint _regGas, address _regAddress) onlyOwner{
 // assign multipass metadata. Register to a multipass list if one exists
   author = _author;
   title = _title;
   description = _description;
   extUrl = _extUrl;
   avatar = _avatar;
- // register with a cat contract. MUST HAVE ENOUGH WEI TO PAY FOR A SEAT. add payable and variables in function if this is what really will happen.
- //    uint value = msg.value - _regGas;
- //    bool register = _regAddress.call.gas(_regGas).value(value)();
+  //register with a cat contract. MUST HAVE ENOUGH WEI TO PAY FOR A SEAT. add payable and variables in function if this is what really will happen.
+      uint value = msg.value - _regGas;
+      bool register = _regAddress.call.gas(_regGas).value(value)();
     }
 
 // change the public verification message. could be useful to prove ownership
@@ -91,23 +91,32 @@ function modPass(uint _action, uint _index, string _aSite, string _aUsrname, str
 
 //figure out a way to do this better
 
-//returns an site at index address
+//returns a site at index address
 function getSite(uint _index) constant returns (string){
   return cmnts[_index].aSite;
   }
 
-//returns an site at index address
+//returns an username at index address
 function userName(uint _index) constant returns (string){
   return cmnts[_index].aUsrname;
   }
 
-//returns an site at index address
+//returns a verification site at index address
 function GetProfile(uint _index) constant returns (string){
   return cmnts[_index].aUrl;
   }
 
 
+//a count of how many commits
+function Count() constant returns (uint){
+  return cCount;
+  }
 
+
+//returns an site at index address
+function aSites(uint _index) constant returns (string){
+  return cmnts[_index].aSite;
+  }
 
 //safety switch
   function kill() {
